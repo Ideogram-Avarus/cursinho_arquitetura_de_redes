@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+**/*.db
+**/*.db-journal
+src/generated
+coverage
+tests
+certs
+scripts

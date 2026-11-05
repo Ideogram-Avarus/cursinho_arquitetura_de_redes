@@ -1,0 +1,36 @@
+# Use os scripts scripts/subir-aula.ps1 e scripts/derrubar-aula.ps1: o app existe só durante a aula.
+# Troque "bolsa-de-batatas" por um nome livre no Fly.io (vira https://<nome>.fly.dev).
+app = "bolsa-de-batatas"
+primary_region = "gru" # São Paulo: menor latência para a turma
+
+[build]
+
+[env]
+  NODE_ENV = "production"
+  PORT = "3000"
+  HOST = "0.0.0.0"
+  # Sem volume: o banco fica dentro da máquina e nasce do zero (com os dados de demonstração)
+  # a cada subida. Ao derrubar o app, tudo some.
+  DATABASE_URL = "file:./prisma/aula.db"
+  LOG_PRETTY = "true" # logs legíveis no `fly logs` (bom para projetar)
+  JWT_EXPIRES_IN_SECONDS = "3600" # 1 hora: o token não expira no meio da prática
+
+[http_service]
+  internal_port = 3000
+  force_https = true # http:// redireciona para https://
+  # A máquina fica ligada enquanto o app existir. Não use auto-stop aqui: sem volume,
+  # uma máquina que para e volta perde o banco (contas e batatas dos alunos) no meio da aula.
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    grace_period = "10s"
+    interval = "30s"
+    method = "GET"
+    path = "/api/status"
+    timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

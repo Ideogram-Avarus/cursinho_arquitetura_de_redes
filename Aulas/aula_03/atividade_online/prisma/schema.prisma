@@ -1,0 +1,61 @@
+// Banco da atividade da aula 03. Sem volume no Fly: ele morre com a máquina.
+// O que guarda os dados é o EXPORTAR do painel. Depois de mudar este arquivo: npm run db:migrate
+
+generator client {
+  provider            = "prisma-client"
+  output              = "../server/generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Usuario {
+  id        Int        @id @default(autoincrement())
+  usuario   String     @unique // login, minúsculo, sem espaços (3–20 caracteres)
+  senhaHash String // bcrypt; a senha em texto nunca é gravada
+  nome      String // nome ou apelido que aparece para o professor
+  criadoEm   DateTime    @default(now())
+  respostas  Resposta[]
+  avaliacoes Avaliacao[]
+}
+
+model Resposta {
+  id           Int      @id @default(autoincrement())
+  usuarioId    Int
+  questaoId    String // "A1", "B3", "T2" (ticket)...
+  valor        String // JSON da resposta (formato validado pelo Zod)
+  marcacao     String? // "S" | "C" | "P" | "?"
+  correcao     String? // o que o aluno escreveu na fase de correção
+  motivoErro   String? // por que o aluno acha que errou (fase de correção)
+  conferiu     Boolean? // o aluno marcou ✔ na correção
+  atualizadoEm DateTime @updatedAt
+  usuario      Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@unique([usuarioId, questaoId])
+}
+
+// Avaliação da parte ABERTA de uma resposta (feita pelo professor ou pelo Claude, no intervalo).
+// Fica separada da Resposta para não mexer no "último salvamento" do aluno. Ela só vale enquanto
+// a resposta for a mesma que foi avaliada (valorAvaliado): se o aluno mudar, volta a ficar pendente.
+model Avaliacao {
+  id            Int      @id @default(autoincrement())
+  usuarioId     Int
+  questaoId     String
+  avaliacao     String // certa | parcial | errada
+  comentario    String?
+  valorAvaliado String // cópia do JSON da resposta que foi avaliada
+  avaliadoEm    DateTime @default(now())
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@unique([usuarioId, questaoId])
+}
+
+// Uma linha só: a fase atual da aula e a hora do último export.
+model Estado {
+  id           Int       @id @default(1)
+  fase         String    @default("atividade") // atividade | correcao | ticket | encerrada
+  ultimoExport DateTime?
+}

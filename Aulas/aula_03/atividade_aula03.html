@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Atividade — Aula 03</title>
+<style>
+  @page { size: A4; margin: 10mm 11mm 10mm 11mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Calibri, Arial, sans-serif; font-size: 9.3pt; line-height: 1.28; color: #1a1a1a; margin: 0; }
+  code, .mono { font-family: Consolas, "Courier New", monospace; font-size: 9pt; }
+  code { background: #f1f1f1; padding: 0 3px; border-radius: 2px; }
+
+  header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #222; padding-bottom: 4px; margin-bottom: 6px; }
+  header h1 { font-size: 14pt; margin: 0; }
+  header .sub { font-size: 8.5pt; color: #555; }
+  .ident { display: flex; gap: 18px; margin: 6px 0 6px; font-size: 9.5pt; }
+  .ident span { flex: 1; border-bottom: 1px solid #555; padding-bottom: 1px; }
+  .ident span.data { flex: 0 0 140px; }
+
+  .aviso { border: 1px solid #999; border-radius: 4px; padding: 5px 8px; display: flex; gap: 12px; font-size: 8.8pt; }
+  .aviso .txt { flex: 1; }
+  .aviso b.t { display: block; font-size: 9.5pt; margin-bottom: 1px; }
+  .aviso ul { margin: 2px 0 0; padding-left: 15px; }
+  .aviso .leg { flex: 0 0 auto; border-left: 1px solid #ccc; padding-left: 10px; font-size: 8.6pt; line-height: 1.45; }
+  .aviso .leg .k { display: inline-block; width: 20px; font-weight: 700; font-family: Consolas, monospace; }
+
+  h2 { font-size: 10.5pt; margin: 7px 0 4px; padding: 2px 6px; background: #e9e9e9; border-left: 4px solid #333; break-after: avoid; }
+
+  .q { margin: 0 0 6px; break-inside: avoid; }
+  .qh { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .qh .n { font-weight: 700; }
+  .marca { font-family: Consolas, monospace; font-size: 8.5pt; white-space: nowrap; color: #333; }
+  .marca i { font-style: normal; display: inline-block; border: 1px solid #777; border-radius: 2px; padding: 0 3px; margin-left: 2px; }
+  .n { color:#000; }
+
+  .linhas { margin-top: 2px; }
+  .linhas div { border-bottom: 1px solid #bbb; height: 6.2mm; }
+
+  table { border-collapse: collapse; width: 100%; margin-top: 3px; font-size: 9pt; }
+  th, td { border: 1px solid #999; padding: 1.5px 5px; text-align: left; vertical-align: top; }
+  th { background: #f2f2f2; font-weight: 600; }
+  td.r { height: 6.3mm; }
+  .w40 { width: 40%; } .w30 { width: 30%; } .w20 { width: 20%; } .w15 { width: 15%; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+  .pre { font-family: Consolas, monospace; font-size: 8.9pt; white-space: pre; margin: 3px 0 0; line-height: 1.55; }
+  .fill { display: inline-block; border-bottom: 1px solid #555; min-width: 34mm; }
+  .fill.s { min-width: 16mm; }
+  .fill.l { min-width: 55mm; }
+  .sublist { margin: 2px 0 0; padding: 0; list-style: none; }
+  .sublist li { display: flex; gap: 4px; margin-top: 3px; }
+  .sublist li .l { flex: 1; border-bottom: 1px solid #bbb; min-height: 5.6mm; }
+  .resp { border: 1px solid #aaa; background: #fafafa; padding: 3px 7px; margin-top: 3px; font-family: Consolas, monospace; font-size: 8.5pt; white-space: pre; line-height: 1.35; }
+  .nota { font-size: 8.5pt; color: #444; }
+  .pb { break-before: page; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Atividade — O que ficou das aulas 01 e 02?</h1>
+    <div class="sub">Arquitetura de Redes · Aula 03</div>
+  </div>
+</header>
+
+<div class="ident">
+  <span>Nome ou apelido:</span>
+  <span class="data">Data: ____/____/______</span>
+</div>
+
+<div class="aviso">
+  <div class="txt">
+    <b class="t">Isto NÃO é prova. Não vale nota.</b>
+    Serve para o professor saber o que ficou claro e o que precisa ser explicado de novo.
+    <ul>
+      <li>Pode usar o caderno, a colinha, a internet e conversar com o colega, mas escreva <b>com as suas palavras</b>.</li>
+      <li>Comece pelas questões com ★. Se sobrar tempo, faça as outras.</li>
+      <li>Em <b>cada</b> questão, circule como você respondeu. Marcar <b>?</b> não é ruim: é a informação mais útil para o professor.</li>
+    </ul>
+  </div>
+  <div class="leg">
+    <span class="k">S</span>Sabia de cabeça<br>
+    <span class="k">C</span>Consultei caderno/colinha<br>
+    <span class="k">P</span>Pesquisei na internet<br>
+    <span class="k">?</span>Chutei / não sei
+  </div>
+</div>
+
+<!-- ============ PARTE A ============ -->
+<h2>PARTE A — Redes e Internet (aula 01)</h2>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A1 ★</span> Com suas palavras: o que é uma rede de computadores? Cite uma rede que você usou hoje.</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="two">
+<div class="q">
+  <div class="qh"><span><span class="n">A2 ★</span> Tipo de rede: <b>PAN, LAN, WLAN, MAN</b> ou <b>WAN</b>?</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <table>
+    <tr><th>Situação</th><th class="w30">Tipo</th></tr>
+    <tr><td>a) O Wi-Fi da sua casa</td><td></td></tr>
+    <tr><td>b) A Internet</td><td></td></tr>
+    <tr><td>c) Fone Bluetooth ligado ao celular</td><td></td></tr>
+    <tr><td>d) PCs do laboratório ligados por cabo</td><td></td></tr>
+    <tr><td>e) Rede que liga as escolas de uma prefeitura</td><td></td></tr>
+  </table>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A4</span> Classifique: <b>Hardware</b>, <b>Software</b>, <b>Serviço</b> ou <b>Espaço</b>.</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <table>
+    <tr><th>Item</th><th class="w40">Classificação</th></tr>
+    <tr><td>a) Switch</td><td></td></tr>
+    <tr><td>b) Windows</td><td></td></tr>
+    <tr><td>c) Banco de dados MySQL</td><td></td></tr>
+    <tr><td>d) E-mail da empresa</td><td></td></tr>
+    <tr><td>e) Ar-condicionado da sala de servidores</td><td></td></tr>
+    <tr><td>f) Roteador</td><td></td></tr>
+  </table>
+</div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A3</span> Você ouve música num fone Bluetooth, com o celular no Wi-Fi de casa. Aí sai de casa e o celular passa a usar o 4G. Quais tipos de rede o celular usou nessa história?</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="linhas"><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A5 ★</span> Cada item é <b>cliente-servidor</b> ou <b>P2P</b>?</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="two">
+    <table>
+      <tr><td>a) Netflix</td><td class="w40"></td></tr>
+      <tr><td>b) Torrent</td><td></td></tr>
+      <tr><td>c) App do banco</td><td></td></tr>
+    </table>
+    <table>
+      <tr><td>d) Site da escola</td><td class="w40"></td></tr>
+      <tr><td>e) Arquivo direto de um PC para outro PC</td><td></td></tr>
+    </table>
+  </div>
+  <div style="margin-top:4px">No cliente-servidor, o que acontece se o <b>servidor</b> cair? E no P2P, se <b>um</b> dos computadores desligar?</div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A6</span> O que é um <b>ISP</b>? O que é o <b>backbone</b>? Qual é o ISP da sua casa ou do seu celular?</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A7 ★</span> Você digitou <code>www.site.com.br</code> no navegador. Numere os passos de <b>1 a 7</b>, na ordem em que acontecem:</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="two" style="font-size:8.4pt"><div class="pre" style="font-size:8.4pt">(   ) O pedido viaja pelo backbone, por vários roteadores
+(   ) O navegador monta e mostra a página
+(   ) O DNS traduz o nome do site para um endereço IP
+(   ) O pedido sai do dispositivo e chega ao roteador de casa</div><div class="pre" style="font-size:8.4pt">(   ) O servidor do site processa e envia a resposta
+(   ) Eu digito a URL no navegador
+(   ) O roteador envia o pedido para o ISP</div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A8 ★</span> O que o <b>DNS</b> faz? Por que ele é chamado de "agenda de contatos da Internet"?</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A9 ★</span> Complete as portas: &nbsp;HTTP = <span class="fill s"></span> &nbsp;HTTPS = <span class="fill s"></span> &nbsp;MySQL = <span class="fill s"></span></span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div style="margin-top:5px">Na analogia do prédio: o <b>IP</b> é <span class="fill l"></span> e a <b>porta</b> é <span class="fill l"></span>.</div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A10 ★</span> Seu colega programou um site e fala: <i>"Abre aí no seu computador: <code>http://localhost:3000</code>"</i>. Você vai ver o site <b>dele</b>? Por quê?</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">A11</span> Explique com suas palavras:</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <ul class="sublist">
+    <li>a) Latência: <span class="l"></span></li>
+    <li>b) Deploy: <span class="l"></span></li>
+    <li>c) API: <span class="l"></span></li>
+  </ul>
+</div>
+
+<!-- ============ PARTE B ============ -->
+<h2>PARTE B — Camada de transporte: UDP e TCP (aula 02)</h2>
+
+<div class="q">
+  <div class="qh"><span><span class="n">B1 ★</span> Complete a tabela:</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <table>
+    <tr><th></th><th class="w30">UDP</th><th class="w30">TCP</th></tr>
+    <tr><td>Abre conexão antes de enviar?</td><td></td><td></td></tr>
+    <tr><td>A entrega é garantida?</td><td></td><td></td></tr>
+    <tr><td>Os dados chegam na ordem certa?</td><td></td><td></td></tr>
+    <tr><td>Um exemplo de uso</td><td></td><td></td></tr>
+  </table>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">B2 ★</span> <b>UDP</b> ou <b>TCP</b>? Justifique em poucas palavras.</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <table>
+    <tr><th class="w30">Situação</th><th class="w15">UDP ou TCP?</th><th>Por quê?</th></tr>
+    <tr><td>a) Chamada de vídeo ao vivo</td><td></td><td></td></tr>
+    <tr><td>b) Baixar um PDF</td><td></td><td></td></tr>
+    <tr><td>c) Posição dos jogadores num jogo online</td><td></td><td></td></tr>
+    <tr><td>d) Enviar o formulário de matrícula</td><td></td><td></td></tr>
+    <tr><td>e) Uma consulta DNS</td><td></td><td></td></tr>
+  </table>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">B3 ★</span> O <b>three-way handshake</b> do TCP. Complete com <b>SYN</b>, <b>SYN-ACK</b> e <b>ACK</b>, e escreva o que cada mensagem quer dizer:</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="pre">Cliente ──(              )──►  Servidor    significa: ___________________________________
+Cliente ◄──(              )──  Servidor    significa: ___________________________________
+Cliente ──(              )──►  Servidor    significa: ___________________________________</div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">B4</span> Verdadeiro (<b>V</b>) ou Falso (<b>F</b>)? <b>Corrija</b> as falsas.</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="pre">(   ) a) O UDP é sempre mais rápido, por isso nunca deve ser usado para nada importante.
+(   ) b) O TCP reenvia os dados que se perderam no caminho.
+(   ) c) No UDP, os dados sempre chegam na mesma ordem em que foram enviados.
+(   ) d) O TCP abre uma conexão antes de começar a enviar os dados.
+(   ) e) A versão mais nova do HTTP (HTTP/3) usa UDP.   <span class="nota">(pode pesquisar)</span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">B5</span> Numa chamada de vídeo, a fala da pessoa "pulou" um pedaço, em vez de a chamada travar esperando. Por que, nesse tipo de aplicação, é melhor <b>perder</b> um pedaço do que <b>esperar</b> ele ser reenviado?</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<!-- ============ PARTE C ============ -->
+<h2>PARTE C — HTTP (aula 02)</h2>
+
+<div class="q">
+  <div class="qh"><span><span class="n">C1 ★</span> O que é o <b>HTTP</b>? Numa comunicação HTTP, quem faz a <b>requisição</b> e quem envia a <b>resposta</b>?</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">C2</span> Qual a diferença entre <b>HTTP</b> e <b>HTTPS</b>? (Pense na porta, no que aparece no navegador e na segurança.)</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">C3</span> <span class="nota">(pode pesquisar)</span> O HTTP é <b>stateless</b> ("sem estado"): o servidor não lembra das requisições anteriores. Então como o site sabe que você continua logado a cada clique?</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="two">
+<div class="q">
+  <div class="qh"><span><span class="n">C4 ★</span> Qual <b>método HTTP</b>? <span class="nota">(GET, POST, PUT, PATCH, DELETE)</span></span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <table>
+    <tr><th>Ação</th><th class="w30">Método</th></tr>
+    <tr><td>a) Ver a lista de produtos</td><td></td></tr>
+    <tr><td>b) Cadastrar um aluno novo</td><td></td></tr>
+    <tr><td>c) Mudar <b>só</b> o telefone de um aluno</td><td></td></tr>
+    <tr><td>d) Apagar um comentário</td><td></td></tr>
+    <tr><td>e) Substituir o cadastro <b>inteiro</b> de um aluno</td><td></td></tr>
+  </table>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">C5 ★</span> O 1º dígito do código de status diz o tipo da resposta. Complete:</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="pre" style="line-height:2.05">2xx = ____________________________
+3xx = ____________________________
+4xx = ____________________________
+5xx = ____________________________</div>
+</div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">C6 ★</span> Qual <b>código de status</b> o servidor deve devolver? Escolha da lista: <code>200 • 201 • 204 • 400 • 401 • 403 • 404 • 409 • 429 • 500 • 503</code></span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="two">
+    <table>
+      <tr><th>Situação</th><th class="w15">Código</th></tr>
+      <tr><td>a) Pedi <code>/api/produtos/99999</code>, que não existe</td><td></td></tr>
+      <tr><td>b) Tentei ver meu perfil sem fazer login</td><td></td></tr>
+      <tr><td>c) Logado como aluno, tentei entrar na área do administrador</td><td></td></tr>
+      <tr><td>d) Mandei um JSON com uma vírgula faltando</td><td></td></tr>
+      <tr><td>e) Tem um bug no código do servidor</td><td></td></tr>
+    </table>
+    <table>
+      <tr><th>Situação</th><th class="w15">Código</th></tr>
+      <tr><td>f) Tentei me cadastrar com um e-mail que já existe</td><td></td></tr>
+      <tr><td>g) Fiz 500 requisições em 1 segundo</td><td></td></tr>
+      <tr><td>h) O servidor está em manutenção</td><td></td></tr>
+      <tr><td>i) Cadastrei um produto novo e deu certo</td><td></td></tr>
+      <tr><td>j) Apaguei um produto, deu certo e não há nada para mostrar</td><td></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">C7 ★</span> Para cada situação, diga <b>onde está o problema</b> (no pedido, no servidor ou na rede) e <b>o que você faria</b>:</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <ul class="sublist">
+    <li>a) O app mostra <b>"Erro 400"</b>: <span class="l"></span></li>
+    <li>b) O app mostra <b>"Erro 503"</b>: <span class="l"></span></li>
+    <li>c) O navegador mostra <b>"Não foi possível acessar o site"</b>, sem código nenhum: <span class="l"></span></li>
+  </ul>
+</div>
+
+<!-- ============ PARTE D ============ -->
+<h2>PARTE D — Lendo URLs e respostas</h2>
+
+<div class="q">
+  <div class="qh"><span><span class="n">D1</span> Separe as partes desta URL: <code>https://bolsa.fly.dev/api/batatas?setor=doce&amp;precoMax=10</code></span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <table>
+    <tr><td class="w20">Protocolo</td><td></td><td class="w20">Caminho</td><td></td></tr>
+    <tr><td>Domínio</td><td></td><td>Query string</td><td></td></tr>
+  </table>
+  <div style="margin-top:4px">O que muda na resposta se eu trocar <code>setor=doce</code> por <code>setor=gourmet</code>?</div>
+  <div class="linhas"><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">D2</span> Uma colega mandou um <code>POST /api/batatas</code> e recebeu esta resposta:</span><span class="marca"><i>S</i><i>C</i><i>P</i><i>?</i></span></div>
+  <div class="two" style="align-items:start">
+    <div class="resp">HTTP/1.1 400 Bad Request
+Content-Type: application/json
+
+{
+  "status": 400,
+  "erro": "JSON inválido",
+  "mensagem": "O corpo da requisição
+               não é um JSON válido.",
+  "dica": "Confira as aspas duplas,
+           as vírgulas e as chaves."
+}</div>
+    <ul class="sublist" style="margin-top:0">
+      <li>a) Deu certo ou deu erro? Como você sabe?</li>
+      <li><span class="l"></span></li>
+      <li>b) O problema está no pedido dela ou no servidor?</li>
+      <li><span class="l"></span></li>
+      <li>c) O que ela deve fazer para resolver?</li>
+      <li><span class="l"></span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ PARTE E ============ -->
+<h2>PARTE E — Para o professor (não tem resposta certa)</h2>
+
+<div class="q">
+  <div class="qh"><span><span class="n">E1.</span> Em qual assunto você se sente <b>mais seguro</b>? E <b>menos seguro</b>?</span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+<div class="q">
+  <div class="qh"><span><span class="n">E2.</span> Que parte da aula 02 ficou mais confusa? O que você gostaria que fosse explicado de novo?</span></div>
+  <div class="linhas"><div></div><div></div></div>
+</div>
+
+</body>
+</html>

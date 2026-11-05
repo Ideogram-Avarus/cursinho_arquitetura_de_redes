@@ -1,0 +1,81 @@
+// Banco de dados da Bolsa de Batatas.
+// Depois de mudar este arquivo: npm run db:migrate
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+  // Imports sem extensão para funcionar com CommonJS e ts-jest.
+  importFileExtension = ""
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// Uma "ação" negociada na bolsa: cada variedade de batata tem um ticker.
+model Batata {
+  id           Int      @id @default(autoincrement())
+  ticker       String   @unique
+  nome         String
+  setor        String
+  preco        Float
+  descricao    String?
+  // Ações oficiais vêm do seed e não podem ser alteradas pelos alunos.
+  oficial      Boolean  @default(false)
+  criadoPor    String?
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  posicoes Posicao[]
+  ordens   Ordem[]
+}
+
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  usuario   String   @unique
+  senhaHash String
+  // "INVESTIDOR" ou "ADMIN"
+  papel     String   @default("INVESTIDOR")
+  saldo     Float    @default(10000)
+  criadoEm  DateTime @default(now())
+
+  posicoes Posicao[]
+  ordens   Ordem[]
+}
+
+// Quantas ações de cada batata um usuário tem na carteira.
+model Posicao {
+  id         Int @id @default(autoincrement())
+  quantidade Int
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  batataId  Int
+  batata    Batata  @relation(fields: [batataId], references: [id], onDelete: Cascade)
+
+  @@unique([usuarioId, batataId])
+}
+
+model Ordem {
+  id            Int      @id @default(autoincrement())
+  // "COMPRA" ou "VENDA"
+  tipo          String
+  quantidade    Int
+  precoUnitario Float
+  total         Float
+  criadoEm      DateTime @default(now())
+
+  usuarioId Int
+  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  batataId  Int
+  batata    Batata  @relation(fields: [batataId], references: [id], onDelete: Cascade)
+}
+
+model Avaliacao {
+  id         Int      @id @default(autoincrement())
+  apelido    String
+  nota       Int
+  comentario String?
+  criadoEm   DateTime @default(now())
+}

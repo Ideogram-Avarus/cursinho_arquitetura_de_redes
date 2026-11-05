@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* As cores vêm de tema.ts (Material 3). Aqui elas viram classes do Tailwind: bg-primary, text-on-surface... */
+@theme inline {
+  --font-sans: "Roboto Flex Variable", system-ui, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --color-primary: var(--md-primary);
+  --color-on-primary: var(--md-on-primary);
+  --color-primary-container: var(--md-primary-container);
+  --color-on-primary-container: var(--md-on-primary-container);
+  --color-secondary: var(--md-secondary);
+  --color-on-secondary: var(--md-on-secondary);
+  --color-secondary-container: var(--md-secondary-container);
+  --color-on-secondary-container: var(--md-on-secondary-container);
+  --color-tertiary: var(--md-tertiary);
+  --color-on-tertiary: var(--md-on-tertiary);
+  --color-tertiary-container: var(--md-tertiary-container);
+  --color-on-tertiary-container: var(--md-on-tertiary-container);
+  --color-error: var(--md-error);
+  --color-on-error: var(--md-on-error);
+  --color-error-container: var(--md-error-container);
+  --color-on-error-container: var(--md-on-error-container);
+  --color-surface: var(--md-surface);
+  --color-on-surface: var(--md-on-surface);
+  --color-on-surface-variant: var(--md-on-surface-variant);
+  --color-surface-container-lowest: var(--md-surface-container-lowest);
+  --color-surface-container-low: var(--md-surface-container-low);
+  --color-surface-container: var(--md-surface-container);
+  --color-surface-container-high: var(--md-surface-container-high);
+  --color-surface-container-highest: var(--md-surface-container-highest);
+  --color-outline: var(--md-outline);
+  --color-outline-variant: var(--md-outline-variant);
+  --color-inverse-surface: var(--md-inverse-surface);
+  --color-inverse-on-surface: var(--md-inverse-on-surface);
+  --color-inverse-primary: var(--md-inverse-primary);
+
+  --color-acerto: var(--grafico-acerto);
+  --color-erro: var(--grafico-erro);
+}
+
+/* Azul e laranja em vez de verde e vermelho: quem é daltônico também separa as duas cores. */
+:root {
+  --grafico-acerto: #2a78d6;
+  --grafico-erro: #eb6834;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --grafico-acerto: #3987e5;
+    --grafico-erro: #d95926;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-surface font-sans text-on-surface antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+/* Camada de "estado" do Material 3: escurece/clareia um pouco ao passar o mouse e ao tocar. */
+@utility camada-estado {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 150ms;
+    pointer-events: none;
+    z-index: -1;
+  }
+  &:hover:not(:disabled)::after {
+    opacity: 0.08;
+  }
+  &:active:not(:disabled)::after {
+    opacity: 0.12;
+  }
+}
+
+/* Respostas abertas que ainda não têm nota: listras, para não parecer acerto nem erro. */
+@utility listras-aguardando {
+  background: repeating-linear-gradient(135deg, var(--md-outline) 0 4px, var(--md-surface-container-highest) 4px 9px);
+}
